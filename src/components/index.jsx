@@ -71,12 +71,14 @@ class MaterialUiPhoneNumber extends React.Component {
   constructor(props) {
     super(props);
     let filteredCountries = countryData.allCountries;
-
+    this.sortDataWithPrefferedCountries = this.sortDataWithPrefferedCountries.bind(this);
     if (props.disableAreaCodes) filteredCountries = this.deleteAreaCodes(filteredCountries);
     if (props.regions) filteredCountries = this.filterRegions(props.regions, filteredCountries);
 
-    const onlyCountries = this.excludeCountries(
-      this.getOnlyCountries(props.onlyCountries, filteredCountries), props.excludeCountries,
+    const onlyCountries = this.sortDataWithPrefferedCountries(
+      this.excludeCountries(
+        this.getOnlyCountries(props.onlyCountries, filteredCountries), props.excludeCountries,
+      ),
     );
 
     const preferredCountries = filter(filteredCountries, (country) => some(props.preferredCountries, (preferredCountry) => preferredCountry === country.iso2));
@@ -94,7 +96,6 @@ class MaterialUiPhoneNumber extends React.Component {
       // Empty params
       countryGuess = 0;
     }
-    this.sortDataWithPrefferedCountries = this.sortDataWithPrefferedCountries.bind(this);
 
     const countryGuessIndex = findIndex(this.allCountries, countryGuess);
     const dialCode = (
@@ -693,7 +694,7 @@ class MaterialUiPhoneNumber extends React.Component {
                   },
                 }}
               >
-                {map(this.sortDataWithPrefferedCountries(onlyCountries), (country, index) => (
+                {map(onlyCountries, (country, index) => (
                   <Item
                     key={`preferred_${country.iso2}_${index}`}
                     itemRef={(node) => {
