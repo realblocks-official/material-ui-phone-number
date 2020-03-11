@@ -700,6 +700,7 @@ const rawAllCountries = [
     ['middle-east'],
     'kw',
     '965',
+    '+... ... ... ....',
   ],
   [
     'Kyrgyzstan',
