@@ -94,6 +94,7 @@ class MaterialUiPhoneNumber extends React.Component {
       // Empty params
       countryGuess = 0;
     }
+    this.sortDataWithPrefferedCountries = this.sortDataWithPrefferedCountries.bind(this);
 
     const countryGuessIndex = findIndex(this.allCountries, countryGuess);
     const dialCode = (
@@ -585,6 +586,18 @@ class MaterialUiPhoneNumber extends React.Component {
     return isValid(formattedNumber.replace(/\D/g, ''));
   };
 
+  sortDataWithPrefferedCountries = (countries) => {
+    const { preferredCountries } = this.state;
+    return countries.reduce((accumulator, value) => {
+      if (preferredCountries.includes(value)) {
+        accumulator.unshift(value);
+      } else {
+        accumulator.push(value);
+      }
+      return accumulator;
+    }, []);
+  };
+
   updateFormattedNumber = (number) => {
     const { onlyCountries, defaultCountry } = this.state;
     const { disableCountryCode } = this.props;
@@ -696,23 +709,7 @@ class MaterialUiPhoneNumber extends React.Component {
                   },
                 }}
               >
-                {!!preferredCountries.length && map(preferredCountries, (country, index) => (
-                  <Item
-                    key={`preferred_${country.iso2}_${index}`}
-                    itemRef={(node) => {
-                      this.flags[`flag_no_${index}`] = node;
-                    }}
-                    onClick={() => this.handleFlagItemClick(country)}
-                    name={country.name}
-                    iso2={country.iso2}
-                    dialCode={country.dialCode}
-                    localization={localization && localization[country.name]}
-                  />
-                ))}
-
-                {!!preferredCountries.length && <Divider />}
-
-                {map(onlyCountries, (country, index) => (
+                {map(this.sortDataWithPrefferedCountries(onlyCountries), (country, index) => (
                   <Item
                     key={`preferred_${country.iso2}_${index}`}
                     itemRef={(node) => {
