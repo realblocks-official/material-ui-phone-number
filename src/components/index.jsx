@@ -74,15 +74,13 @@ class MaterialUiPhoneNumber extends React.Component {
     this.sortDataWithPrefferedCountries = this.sortDataWithPrefferedCountries.bind(this);
     if (props.disableAreaCodes) filteredCountries = this.deleteAreaCodes(filteredCountries);
     if (props.regions) filteredCountries = this.filterRegions(props.regions, filteredCountries);
+    const preferredCountries = filter(filteredCountries, (country) => some(props.preferredCountries, (preferredCountry) => preferredCountry === country.iso2));
 
     const onlyCountries = this.sortDataWithPrefferedCountries(
       this.excludeCountries(
         this.getOnlyCountries(props.onlyCountries, filteredCountries), props.excludeCountries,
-      ),
+      ), preferredCountries,
     );
-
-    const preferredCountries = filter(filteredCountries, (country) => some(props.preferredCountries, (preferredCountry) => preferredCountry === country.iso2));
-
     const inputNumber = props.value || '';
 
     let countryGuess;
@@ -585,8 +583,7 @@ class MaterialUiPhoneNumber extends React.Component {
     return isValid(formattedNumber.replace(/\D/g, ''));
   };
 
-  sortDataWithPrefferedCountries = (countries) => {
-    const { preferredCountries } = this.state;
+  sortDataWithPrefferedCountries = (countries, preferredCountries) => {
     return countries.reduce((accumulator, value) => {
       if (preferredCountries.includes(value)) {
         accumulator.unshift(value);
