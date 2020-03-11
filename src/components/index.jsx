@@ -303,9 +303,7 @@ class MaterialUiPhoneNumber extends React.Component {
 
     if (!anchorEl && disabled) return;
 
-    const highlightCountryIndex = preferredCountries.includes(selectedCountry)
-      ? findIndex(preferredCountries, selectedCountry)
-      : findIndex(onlyCountries, selectedCountry);
+    const highlightCountryIndex = findIndex(onlyCountries, selectedCountry)
 
     if (preferredCountries.includes(selectedCountry)) {
       this.setState({
@@ -655,20 +653,6 @@ class MaterialUiPhoneNumber extends React.Component {
                 onChange={(e) => this.handleFlagItemClick(e.target.value)}
                 disableUnderline
               >
-                {!!preferredCountries.length && map(preferredCountries, (country, index) => (
-                  <Item
-                    key={`preferred_${country.iso2}_${index}`}
-                    itemRef={(node) => {
-                      this.flags[`flag_no_${index}`] = node;
-                    }}
-                    name={country.name}
-                    iso2={country.iso2}
-                    dialCode={country.dialCode}
-                    localization={localization && localization[country.name]}
-                    native
-                  />
-                ))}
-
                 {map(onlyCountries, (country, index) => (
                   <Item
                     key={`preferred_${country.iso2}_${index}`}
