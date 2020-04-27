@@ -685,11 +685,6 @@ class MaterialUiPhoneNumber extends React.Component {
                 open={Boolean(anchorEl)}
                 onClose={() => this.setState({ anchorEl: null })}
                 onEnter={this.handleFlagDropdownClick}
-                PaperProps={{
-                  ref: (node) => {
-                    this.dropdownContainerRef = node;
-                  },
-                }}
               >
                 {map(onlyCountries, (country, index) => (
                   <Item
