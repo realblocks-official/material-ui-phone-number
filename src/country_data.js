@@ -60,6 +60,12 @@ const rawAllCountries = [
     '1264',
   ],
   [
+    'Antarctica',
+    ['antarctica'],
+    'aq',
+    '672',
+  ],
+  [
     'Antigua and Barbuda',
     ['america', 'carribean'],
     'ag',
