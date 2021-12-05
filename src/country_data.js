@@ -60,6 +60,12 @@ const rawAllCountries = [
     '1264',
   ],
   [
+    'Antarctica',
+    ['antarctica'],
+    'aq',
+    '672',
+  ],
+  [
     'Antigua and Barbuda',
     ['america', 'carribean'],
     'ag',
@@ -267,6 +273,12 @@ const rawAllCountries = [
     '1345',
   ],
   [
+    'Cocos Islands',
+    ['asia'],
+    'cc',
+    '61'
+  ],
+  [
     'Central African Republic',
     ['africa'],
     'cf',
@@ -290,6 +302,12 @@ const rawAllCountries = [
     'cn',
     '86',
     '+.. ..-.........',
+  ],
+  [
+    'Christmas Island',
+    ['asia'],
+    'cx',
+    '61'
   ],
   [
     'Colombia',
@@ -559,6 +577,12 @@ const rawAllCountries = [
     '+... ....-....',
   ],
   [
+    'Guernsey',
+    ['europe'],
+    'gg',
+    '44'
+  ],
+  [
     'Guinea',
     ['africa'],
     'gn',
@@ -649,6 +673,12 @@ const rawAllCountries = [
     '+... ... ... ....',
   ],
   [
+    'Isle of Man',
+    ['europe'],
+    'im',
+    '44'
+  ],
+  [
     'Italy',
     ['europe', 'european-union'],
     'it',
@@ -668,6 +698,12 @@ const rawAllCountries = [
     'jp',
     '81',
     '+.. .. .... ....',
+  ],
+  [
+    'Jersey',
+    ['europe'],
+    'je',
+    '44'
   ],
   [
     'Jordan',
@@ -922,6 +958,12 @@ const rawAllCountries = [
     '+.. .. ........',
   ],
   [
+    'Netherlands Antilles',
+    ['europe'],
+    'an',
+    '599'
+  ],
+  [
     'New Caledonia',
     ['oceania'],
     'nc',
@@ -1038,6 +1080,12 @@ const rawAllCountries = [
     'ph',
     '63',
     '+.. .... .......',
+  ],
+  [
+    'Pitcairn Islands',
+    ['oceania'],
+    'pn',
+    '64'
   ],
   [
     'Poland',
