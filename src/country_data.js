@@ -298,6 +298,12 @@ const rawAllCountries = [
     '+.. ..-.........',
   ],
   [
+    'Christmas Island',
+    ['asia'],
+    'cx',
+    '61'
+  ],
+  [
     'Colombia',
     ['america', 'south-america'],
     'co',
